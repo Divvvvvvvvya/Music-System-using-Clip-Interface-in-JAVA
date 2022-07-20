@@ -1,0 +1,104 @@
+import java.io.*;
+import java.net.*;
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import Modules.*;
+
+//Client class which has the Music GUI
+//Gets all the Files from Player
+public class Listener
+{
+	private static Socket socket;
+    private static BufferedInputStream inputStream;
+    static DataInputStream dis= null;
+    DataOutputStream dos = null;
+
+	
+
+	public Listener() throws Exception
+	{
+		try 
+		{
+			//socket Connection Established
+            socket = new Socket("127.0.0.1", 6666);
+			if (socket.isConnected()) 
+			{
+				inputStream = new BufferedInputStream(socket.getInputStream());
+				dis=new DataInputStream(socket.getInputStream());
+				dos = new DataOutputStream(socket.getOutputStream());
+				
+				System.out.println(dis.readUTF());
+				dos.writeUTF("Transfering all the music files\n Please wait for the Listener Window to open\n ");
+				
+				//filecount being read
+				String filecount = dis.readUTF();
+				int fcount= Integer.parseInt(filecount);
+				System.out.println(dis.readUTF());
+				
+				//for loop for loading the files
+				for (int i=1; i<=fcount;i++)
+				{
+					String songname = dis.readUTF();
+					System.out.println(songname);
+					AudioInputStream ais = AudioSystem.getAudioInputStream(inputStream);
+					try 
+					{
+						//Writes to the appropriate Location
+						AudioSystem.write(ais, AudioFileFormat.Type.WAVE, new File("C:\\Users\\Acer\\Documents\\CN Project\\Listener files\\"+songname));
+		            	
+		            }
+		            catch(Exception e) 
+					{
+						//e.printStackTrace();
+		            	System.out.println("bye f off");
+		            }
+	               
+				}
+				
+				
+			}
+			
+		}
+		catch (IOException | UnsupportedAudioFileException e) 
+		{
+            System.err.println(e);
+        }
+
+		//Main Music GUI opened here. 
+		//Imported from Modules.MainFrameGUI
+		MainFrameGUI m = new MainFrameGUI();
+		
+	}
+
+	
+	
+		
+	public static void main(String[] args) 
+	{
+		
+	try
+		{
+			Listener l= new Listener();
+			
+		}
+		catch (Exception ie)
+		{
+			ie.printStackTrace();
+		}
+		
+	}
+}
+
+
+
+			
+			
+	
+
+	
+
+
+

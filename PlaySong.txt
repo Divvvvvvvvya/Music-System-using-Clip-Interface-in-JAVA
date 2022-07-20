@@ -1,0 +1,161 @@
+package Modules;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+ 
+public class PlaySong
+{
+    static Clip clip;
+    static Long currentFrame;
+    static String status;
+    AudioInputStream audioInputStream;
+    static String filePath;
+  
+
+    public PlaySong(String filePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException 
+    {
+    
+    	audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+        clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+    }
+  
+   public void play() throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    {
+    	
+        clip.start();
+        status = "play";
+       
+    }
+
+	public void stop() throws UnsupportedAudioFileException,IOException, LineUnavailableException 
+    {
+        
+    	currentFrame = 0L;
+    	System.out.println("hi4");
+        clip.stop();
+        System.out.println("hi4");
+        clip.close();
+        System.out.println("hi5");
+    }
+	
+    
+    public void pause() 
+    {
+    	System.out.println("hi5.1");
+    	System.out.println(status);
+    	if (status.equals("paused")) 
+        {
+    		System.out.println("hi5.1.1");
+            System.out.println("audio is already paused");
+            return;
+        }
+    	System.out.println("hi5.2");
+        this.currentFrame = this.clip.getMicrosecondPosition();
+        System.out.println("hi5.3");
+        clip.stop();
+        System.out.println("hi5.4");
+        status = "paused";
+    }
+      
+    public void resumeAudio() throws UnsupportedAudioFileException, IOException, LineUnavailableException 
+    {
+        if (status.equals("play")) 
+        {
+            System.out.println("Audio is already "+
+            "being played");
+            return;
+        }
+        clip.close();
+        resetAudioStream();
+        clip.setMicrosecondPosition(currentFrame);
+        this.play();
+    }
+    
+    public void restart() throws IOException, LineUnavailableException,UnsupportedAudioFileException 
+	{
+		clip.stop();
+		clip.close();
+		resetAudioStream();
+		currentFrame = 0L;
+		clip.setMicrosecondPosition(0);
+		this.play();
+	}
+    
+    public void resetAudioStream() throws UnsupportedAudioFileException, IOException,LineUnavailableException 
+
+    {
+		audioInputStream = AudioSystem.getAudioInputStream(
+		new File(filePath).getAbsoluteFile());
+		clip.open(audioInputStream);
+		clip.loop(Clip.LOOP_CONTINUOUSLY);
+		
+    }
+    
+    void gotoChoice(int c) throws IOException, LineUnavailableException, UnsupportedAudioFileException 
+    {
+        switch (c) 
+        {
+            case 1:
+                pause();
+                break;
+            case 2:
+                resumeAudio();
+                break;
+            case 3:
+                restart();
+                break;
+            case 4:
+                stop();
+                break;
+      
+        }
+    }
+      
+		      
+
+    
+    public static void main(String[] args) 
+    {
+    
+        try
+        {
+        	filePath = "C:\\Users\\Acer\\Documents\\CN Project\\Player Files\\Dress.wav";
+        	PlaySong song = new PlaySong(filePath);
+            song.play();
+            Scanner sc = new Scanner(System.in);
+            while (true)
+            {
+                System.out.println("1. pause");
+                System.out.println("2. resume");
+                System.out.println("3. Restart");
+                System.out.println("4. stop");
+                int c = sc.nextInt();
+                song.gotoChoice(c);
+                if (c == 4)
+                break;
+            }
+            sc.close();
+           
+            
+        }
+          
+        catch (Exception ex) 
+        {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+          
+        }
+        
+       
+        
+    }
+    
+}
+      

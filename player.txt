@@ -1,0 +1,117 @@
+
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import java.io.*;
+import java.net.*;
+
+// Server class which has all the files. 
+public class player 
+{
+	Socket client = null;
+	DataOutputStream dos = null;
+	DataInputStream dis= null;
+	
+	player() throws Exception
+	{
+		String direc = "C:\\Users\\Acer\\Documents\\CN Project\\Player Files";
+		File[] files = new File(direc).listFiles();
+	try 
+	{
+		//Socket Connection Established
+		ServerSocket serverSocker = new ServerSocket();
+		serverSocker.bind(new InetSocketAddress(6666));
+		
+		if (serverSocker.isBound()) 
+		{
+			client = serverSocker.accept(); 
+			OutputStream out = client.getOutputStream();
+			while (true) 
+			{  
+				dis=new DataInputStream(client.getInputStream());
+				dos = new DataOutputStream(client.getOutputStream());
+				
+				dos.writeUTF("You've SuccessFully Connected To The Player.\nPlease Wait for a few seconds!");
+				System.out.println(dis.readUTF());
+				
+				//FileCount Being written to Listener for transferring all files in player to it 
+				File directory=new File(direc);
+				int fileCount=directory.list().length;
+			    System.out.println("File Count:"+fileCount);
+			    dos.writeUTF(Integer.toString(fileCount));
+			    
+			    dos.writeUTF("\n\nList of Files Received :\n");
+			    
+				//For Loop to transfer all the files  
+			    for (File filename : files) 
+                 {
+                 	String Mfilename = filename.getName();
+                 	String fullpath= direc+ "\\" + Mfilename;
+                 	
+                 	//function to return a AudioStream output too write to listener
+                 	AudioInputStream ain = testPlay(fullpath);
+                 	
+                 	if (ain != null) 
+                 	{  
+                 		dos.writeUTF(Mfilename);
+                 		AudioSystem.write(ain, AudioFileFormat.Type.WAVE, out);
+                 	}
+                 }
+             }
+		
+		}
+		
+		serverSocker.close();
+		
+	
+		
+    } 
+	catch (Exception e) 
+	{
+           // e.printStackTrace();
+		System.out.println("bye ");
+    }
+	//serverSocker.close();
+	
+	
+	}
+	
+	
+ 	//function to return a AudioStream output too write to listener
+	public static AudioInputStream testPlay(String filename) 
+	{
+		AudioInputStream din = null;
+		try 
+		{
+			File Mfilepath = new File(filename);
+			AudioInputStream in = AudioSystem.getAudioInputStream(Mfilepath);
+			AudioFormat baseFormat = in.getFormat();
+			AudioFormat decodedFormat = new AudioFormat(AudioFormat.Encoding.PCM_UNSIGNED, baseFormat.getSampleRate(),8, baseFormat.getChannels(), baseFormat.getChannels(),baseFormat.getSampleRate(), false);
+			din = AudioSystem.getAudioInputStream(decodedFormat, in);
+			return din;
+		} 
+		catch (Exception e) 
+		{
+          e.printStackTrace();
+		}
+		return din;
+	}
+		
+			
+	public static void main(String[] args)
+	{
+		try
+		{
+			player p = new player();
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace(); 
+		}
+
+	}
+    
+};
+
+

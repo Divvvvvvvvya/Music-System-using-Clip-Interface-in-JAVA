@@ -1,0 +1,331 @@
+package Modules;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.UIManager;
+import Modules.*;
+
+public class RepGUI implements ActionListener
+{
+
+	JFrame FrameTSRep;
+	JPanel panel;
+	JTextArea txtrAreyouready;
+	JButton btnNewButton_4_1_1;
+	JButton btnNewButton_4_1_2;
+	JButton btnNewButton_4_1_2_1;
+	JButton btnNewButton_4_1_1_1;
+	JButton btnNewButton_4_1_1_2;
+	JButton btnNewButton_4_1_1_2_1;
+	JButton btnNewButton_4_1_1_2_2;
+	JButton btnNewButton_4_1_1_2_2_1;
+	JButton btnNewButton_4_1_1_2_2_2;
+	JButton btnNewButton_4_1_1_2_2_3;
+	JButton btnNewButton_4_1_1_2_2_4;
+	JButton btnNewButton_4_1_1_2_2_5;
+	JButton btnNewButton_4_1_1_2_2_6;
+	JButton btnNewButton_4_1_1_2_2_7;
+	JButton btnNewButton_4_1_1_2_2_8;
+	JButton btnNewButton_4_1_1_2_2_9;
+	JButton btnNewButton_1;
+	JButton btnNewButton_2;
+	JButton btnNewButton_3;
+	JButton btnNewButton_1_1;
+	JTextArea txtrDelicate;
+	JTextArea txtrDress;
+	JTextArea txtrLookWhat;
+	JTextArea txtrsong;
+	
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					RepGUI window = new RepGUI();
+					window.FrameTSRep.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	
+	public RepGUI() 
+	{
+		FrameTSRep = new JFrame();
+		FrameTSRep.setTitle("REPUTATION - Taylor Swift");
+		FrameTSRep.setBackground(UIManager.getColor("Button.foreground"));
+		FrameTSRep.setBounds(100, 100, 508, 300);
+		FrameTSRep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		FrameTSRep.getContentPane().setLayout(null);
+		
+		panel = new JPanel();
+		panel.setBackground(new Color(211, 211, 211));
+		panel.setBounds(0, 0, 492, 261);
+		FrameTSRep.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		
+		txtrAreyouready = new JTextArea();
+		txtrAreyouready.setEditable(false);
+		txtrAreyouready.setBackground(new Color(169, 169, 169));
+		txtrAreyouready.setFont(new Font("Calibri", Font.PLAIN, 13));
+		txtrAreyouready.setText("Are You Ready For It?");
+		txtrAreyouready.setBounds(81, 20, 180, 22);
+		panel.add(txtrAreyouready);
+		
+		
+		//Various Buttons Performing different Actions
+		
+		btnNewButton_4_1_1 = new JButton("pause");
+		btnNewButton_4_1_1.setBackground(new Color(255, 255, 255));
+		btnNewButton_4_1_1.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\pause-button.png"));
+		btnNewButton_4_1_1.setBounds(291, 21, 30, 32);
+		panel.add(btnNewButton_4_1_1);
+		
+		btnNewButton_4_1_2 = new JButton("restart");
+		btnNewButton_4_1_2.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_2.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\resume-button.png"));
+		btnNewButton_4_1_2.setBounds(380, 21, 30, 32);
+		panel.add(btnNewButton_4_1_2);
+		
+		btnNewButton_4_1_2_1 = new JButton("stop");
+		btnNewButton_4_1_2_1.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_2_1.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\stop-button.png"));
+		btnNewButton_4_1_2_1.setBounds(420, 21, 30, 32);
+		panel.add(btnNewButton_4_1_2_1);
+		
+		btnNewButton_4_1_1_1 = new JButton("resume");
+		btnNewButton_4_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_1.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\play-button.png"));
+		btnNewButton_4_1_1_1.setBounds(340, 21, 30, 32);
+		panel.add(btnNewButton_4_1_1_1);
+		
+		btnNewButton_4_1_1_2 = new JButton("New button");
+		btnNewButton_4_1_1_2.setBackground(new Color(255, 255, 255));
+		btnNewButton_4_1_1_2.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\pause-button.png"));
+		btnNewButton_4_1_1_2.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2.setBounds(291, 74, 30, 32);
+		panel.add(btnNewButton_4_1_1_2);
+		
+		btnNewButton_4_1_1_2_1 = new JButton("New button");
+		btnNewButton_4_1_1_2_1.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_1.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\play-button.png"));
+		btnNewButton_4_1_1_2_1.setBounds(340, 74, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_1);
+		
+		btnNewButton_4_1_1_2_2 = new JButton("New button");
+		btnNewButton_4_1_1_2_2.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\resume-button.png"));
+		btnNewButton_4_1_1_2_2.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2.setBounds(380, 74, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2);
+		
+		btnNewButton_4_1_1_2_2_1 = new JButton("New button");
+		btnNewButton_4_1_1_2_2_1.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\stop-button.png"));
+		btnNewButton_4_1_1_2_2_1.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_1.setBounds(420, 74, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_1);
+		
+		btnNewButton_4_1_1_2_2_2 = new JButton("New button");
+		btnNewButton_4_1_1_2_2_2.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\pause-button.png"));
+		btnNewButton_4_1_1_2_2_2.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_2.setBounds(291, 126, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_2);
+		
+		btnNewButton_4_1_1_2_2_3 = new JButton("New Button");
+		btnNewButton_4_1_1_2_2_3.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_3.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\play-button.png"));
+		btnNewButton_4_1_1_2_2_3.setBounds(340, 126, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_3);
+		
+		btnNewButton_4_1_1_2_2_4 = new JButton("New button");
+		btnNewButton_4_1_1_2_2_4.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\resume-button.png"));
+		btnNewButton_4_1_1_2_2_4.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_4.setBounds(380, 126, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_4);
+		
+		btnNewButton_4_1_1_2_2_5 = new JButton("Dress Stop");
+		btnNewButton_4_1_1_2_2_5.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\stop-button.png"));
+		btnNewButton_4_1_1_2_2_5.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_5.setBounds(420, 126, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_5);
+		btnNewButton_4_1_1_2_2_5.addActionListener(this);
+		
+		btnNewButton_4_1_1_2_2_6 = new JButton("New button");
+		btnNewButton_4_1_1_2_2_6.setBackground(new Color(255, 255, 255));
+		btnNewButton_4_1_1_2_2_6.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\pause-button.png"));
+		btnNewButton_4_1_1_2_2_6.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_6.setBounds(291, 170, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_6);
+		
+		btnNewButton_4_1_1_2_2_7 = new JButton("New button");
+		btnNewButton_4_1_1_2_2_7.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_7.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\play-button.png"));
+		btnNewButton_4_1_1_2_2_7.setBounds(340, 170, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_7);
+		
+		btnNewButton_4_1_1_2_2_8 = new JButton("New button");
+		btnNewButton_4_1_1_2_2_8.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\resume-button.png"));
+		btnNewButton_4_1_1_2_2_8.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_8.setBounds(380, 170, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_8);
+		
+		btnNewButton_4_1_1_2_2_9 = new JButton("New button");
+		btnNewButton_4_1_1_2_2_9.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Buttons\\stop-button.png"));
+		btnNewButton_4_1_1_2_2_9.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_4_1_1_2_2_9.setBounds(420, 173, 30, 32);
+		panel.add(btnNewButton_4_1_1_2_2_9);
+		
+		
+		//Image Icons of songs
+		
+		btnNewButton_1 = new JButton("play");
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Rep\\Delicate.png"));
+		btnNewButton_1.setBounds(10, 64, 47, 42);
+		panel.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("play");
+		/*btnNewButton_2.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					String filePath = "C:\\Users\\Acer\\Documents\\CN Project\\Music\\Rep\\Taylor Swift - Dress.wav";
+					PlaySong audioPlayer = new PlaySong(filePath);
+					audioPlayer.play();
+					
+					if(e.getSource()==btnNewButton_4_1_1_2_2_5)
+					{
+						audioPlayer.stop();
+					}
+						
+				}
+				catch(Exception ex)
+				{
+					System.out.println("Error with playing sound.");
+		            ex.printStackTrace();
+				}
+			}
+		}); */
+		btnNewButton_2.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Rep\\Dress.jpg"));
+		btnNewButton_2.setBounds(10, 116, 47, 42);
+		panel.add(btnNewButton_2);
+		btnNewButton_2.addActionListener(this);
+		
+		btnNewButton_3 = new JButton("play");
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Rep\\Look What You Made Me do.png"));
+		btnNewButton_3.setBounds(10, 173, 47, 42);
+		panel.add(btnNewButton_3);
+		
+
+		btnNewButton_1_1 = new JButton("play");
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\Acer\\Documents\\CN Project\\Images\\Rep\\Are You Ready For It.jpg"));
+		btnNewButton_1_1.setBounds(10, 11, 47, 42);
+		panel.add(btnNewButton_1_1);
+		
+		
+		JTextArea txtrDelicate = new JTextArea();
+		txtrDelicate.setEditable(false);
+		txtrDelicate.setBackground(new Color(169, 169, 169));
+		txtrDelicate.setFont(new Font("Calibri", Font.PLAIN, 13));
+		txtrDelicate.setText("Delicate");
+		txtrDelicate.setBounds(81, 73, 180, 22);
+		panel.add(txtrDelicate);
+		
+		JTextArea txtrDress = new JTextArea();
+		txtrDress.setEditable(false);
+		txtrDress.setBackground(new Color(169, 169, 169));
+		txtrDress.setFont(new Font("Calibri", Font.PLAIN, 13));
+		txtrDress.setText("Dress");
+		txtrDress.setBounds(81, 125, 180, 22);
+		panel.add(txtrDress);
+		
+		JTextArea txtrLookWhat = new JTextArea();
+		txtrLookWhat.setEditable(false);
+		txtrLookWhat.setBackground(new Color(169, 169, 169));
+		txtrLookWhat.setWrapStyleWord(true);
+		txtrLookWhat.setFont(new Font("Calibri", Font.PLAIN, 13));
+		txtrLookWhat.setText("Look What You Made Me Do");
+		txtrLookWhat.setBounds(81, 182, 180, 22);
+		panel.add(txtrLookWhat);
+		
+		
+		JTextArea txtrsong = new JTextArea();
+		txtrsong.setEditable(false);
+		txtrsong.setLineWrap(true);
+		txtrsong.setWrapStyleWord(true);
+		txtrsong.setFont(new Font("Calibri", Font.PLAIN, 13));
+		txtrsong.setBackground(new Color(169, 169, 169));
+		txtrsong.setBounds(119, 228, 264, 22);
+		panel.add(txtrsong);
+		FrameTSRep.setVisible(true);
+		
+		
+	}
+
+		
+	public void actionPerformed(ActionEvent e)
+		{
+		try
+		{
+			PlaySong song1 = new PlaySong("C:\\Users\\Acer\\Documents\\CN Project\\Listener files\\Dress.wav");
+		
+		
+			if(e.getSource()==btnNewButton_2)
+			{
+				try
+				{
+					//String filePath = "C:\\Users\\Acer\\Documents\\CN Project\\Music\\Rep\\Taylor Swift - Dress.wav";
+					//PlaySong audioPlayer = new PlaySong(filePath);
+					song1.play();
+					System.out.println("hi");
+						
+				}
+				catch(Exception ex)
+				{
+					System.out.println("Error with playing sound.");
+		            ex.printStackTrace();
+				}
+			}
+			
+			if(e.getSource()==btnNewButton_4_1_1_2_2_5)
+			{
+				try
+				{
+					System.out.println("hi2");
+					song1.pause();
+				}
+				 catch (Exception ex) 
+		        {
+		            System.out.println("Error with stopping sound.");
+		            ex.printStackTrace();
+		          
+		        }
+				
+			}
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Error with file.");
+            ex.printStackTrace();
+		}
+		}
+		
+	
+	
+
+}
